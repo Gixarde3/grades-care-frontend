@@ -17,7 +17,7 @@ function Activitie({titulo, descripcion, materia, puntos, actividad, observacion
         <>
             <button className="activitie" onClick = {() => navigate(`activitie/${id}`)}>
                 <p className="puntos">{puntos} pts.</p>
-                <h2>{titulo}</h2>
+                <h3>{titulo}</h3>
                 <p>{descripcion}</p>
                 <p>{materia}</p>
             </button>

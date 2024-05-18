@@ -1,5 +1,5 @@
 import LayoutDashboard from "./LayoutDashboard";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import Alert from "./Alert";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -8,6 +8,14 @@ function Dashboard() {
     const [alert, setAlert] = useState(null);
     const [alertOpen, setAlertOpen] = useState(false);
     const [activities, setActivities] = useState([]);
+
+    const titleRef = useRef(null);
+    const descriptionRef = useRef(null);
+    const subjectRef = useRef(null);
+    const observationsRef = useRef(null);
+    const tipoRef = useRef(null);
+
+
     const { user, isAuthenticated, isLoading } = useAuth0();
 
     const openAlert = (title, message, kind, redirectRoute, asking, onAccept) => {
@@ -18,14 +26,43 @@ function Dashboard() {
         setAlert(null);
         setAlertOpen(false);
     }
-
+    const getActivities = async () => {
+        const response = await axios.post('http://localhost:3000/activities', {idUsuario: user.sub});
+        setActivities(response.data.data);
+    }
     useEffect(() => {
-        const getActivities = async () => {
-            const response = await axios.post('http://localhost:3000/activities', {idUsuario: user.sub});
-            setActivities(response.data.data);
-        }
         getActivities();
     }, []);
+
+    const crearActividad = async () => {
+        const response = await axios.post('http://localhost:3000/activitie', {idUsuario: user.sub, title: titleRef.current.value, description: descriptionRef.current.value, subject: subjectRef.current.value, observations: observationsRef.current.value, type: tipoRef.current.value});
+        if(response.data.success){
+            openAlert("¡Actividad creada!",
+                <div>
+                    <h2>¡Tu actividad ha sido creada!</h2>
+                    <p>¡Ahora podrás disfrutar de una experiencia personalizada!</p>
+                </div>,
+                'success',
+                null,
+                null,
+                null
+            )
+            getActivities();
+        }else{
+            openAlert("¡Error!",
+                <div>
+                    <h2>¡Hubo un error al crear la actividad!</h2>
+                    <p>¡Inténtalo de nuevo más tarde!</p>
+                </div>,
+                'error',
+                null,
+                null,
+                null
+            )  
+        }
+    }
+
+
     return (
         <LayoutDashboard>
             <h1 className="bold">Actividades</h1>
@@ -45,6 +82,38 @@ function Dashboard() {
                         />
                     ))
                 }
+                <button className="activitie" style={{
+                    alignItems: 'center',
+                }} 
+                onClick={() => openAlert('Crear actividad',
+                    <form>
+                        <label htmlFor="title">Título:</label>
+                        <input type="text" id="title" name="title" ref={titleRef}/>
+                        <label htmlFor="description">Da una descripción de lo que te falla, para que nuestra <span className="bold">IA</span> te proponga una:</label>
+                        <input type="text" id="description" name="description"  ref={descriptionRef}/>
+                        <label htmlFor="subject">Materia:</label>
+                        <input type="text" id="subject" name="subject" ref={subjectRef}/>
+                        <label htmlFor="observations">Observaciones o restricciones:</label>
+                        <input type="text" id="observations" name="observations" ref={observationsRef} />
+                        <label>
+                            Tipo de actividad:
+                            <select ref={tipoRef}>
+                                <option value="1">Actividad</option>
+                                <option value="2">Examen</option>
+                                <option value="3">Explicación</option>
+                            </select>
+                        </label>
+                    </form>,
+                    'mascot',
+                    null,
+                    true,
+                    crearActividad)
+                }
+                
+                >
+                    <h3>Crear actividad</h3>
+                    <img src="/img/add.png" alt="Imagen de añadir" />
+                </button>
             </div>
             <Alert 
                 isOpen={alertOpen}

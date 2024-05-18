@@ -95,14 +95,6 @@ function Dashboard() {
                         <input type="text" id="subject" name="subject" ref={subjectRef}/>
                         <label htmlFor="observations">Observaciones o restricciones:</label>
                         <input type="text" id="observations" name="observations" ref={observationsRef} />
-                        <label>
-                            Tipo de actividad:
-                            <select ref={tipoRef}>
-                                <option value="1">Actividad</option>
-                                <option value="2">Examen</option>
-                                <option value="3">Explicación</option>
-                            </select>
-                        </label>
                     </form>,
                     'mascot',
                     null,

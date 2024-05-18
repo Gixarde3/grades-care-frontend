@@ -27,7 +27,7 @@ function User() {
             <button id="profile" onClick={() => setOptionsOpened(!optionsOpened)}>
                 <img src={`${user.picture}`} alt={`Foto de perfil de ${user.name}`} />
                 <div className={`options ${optionsOpened ? "open" : "close"}`}>
-                    <button className="logout option" onClick={() => navigate('prizes')}>
+                    <button className="logout option" onClick={() => navigate('/prizes')}>
                         Canjear puntos
                         <img src="/img/brush.png" alt="" />
                     </button>

@@ -89,12 +89,20 @@ function Dashboard() {
                     <form>
                         <label htmlFor="title">Título:</label>
                         <input type="text" id="title" name="title" ref={titleRef}/>
-                        <label htmlFor="description">Da una descripción de lo que te falla, para que nuestra <span className="bold">IA</span> te proponga una actividad a tu medida:</label>
+                        <label htmlFor="description">Da una descripción de lo que te falla, para que nuestra <span className="bold">IA</span> te proponga una actividad personalizada:</label>
                         <textarea type="text" id="description" name="description"  ref={descriptionRef}></textarea>
                         <label htmlFor="subject">Materia:</label>
                         <input type="text" id="subject" name="subject" ref={subjectRef}/>
                         <label htmlFor="observations">Observaciones o restricciones:</label>
                         <input type="text" id="observations" name="observations" ref={observationsRef} />
+                        <label>
+                            Tipo de actividad:
+                            <select ref={tipoRef}>
+                                <option value="1">Actividad</option>
+                                <option value="2">Examen</option>
+                                <option value="3">Explicación</option>
+                            </select>
+                        </label>
                     </form>,
                     'mascot',
                     null,

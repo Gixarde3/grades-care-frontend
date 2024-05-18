@@ -115,6 +115,9 @@ body{
     #right{
         right: -3rem;
     }
+    #middle{
+        bottom: -3rem;
+    }
     .welcome{
         font-size: 3rem;
     }
@@ -128,5 +131,8 @@ body{
     }
     #right{
         right: -2rem;
+    }
+    #middle{
+        bottom: -2rem;
     }
 }

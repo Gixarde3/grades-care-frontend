@@ -44,9 +44,9 @@ function ActivitieComplete() {
     };
     useEffect(() => {
         const getActivity = async () => {
-            const response = await axios.get('http://localhost:3000/activitie/' + id);
+            const response = await axios.get('https://grades-care-backend.onrender.com/activitie/' + id);
             setActivity(response.data.data);
-            const usuario = ((await axios.post('http://localhost:3000/perfil', {idUsuario: user.sub})).data).data;
+            const usuario = ((await axios.post('https://grades-care-backend.onrender.com/perfil', {idUsuario: user.sub})).data).data;
             if(!response.data.data.answerGPT){
                 const responseGPT = await axios.post('https://gradescare.onrender.com/actividad', 
                 {
@@ -59,7 +59,7 @@ function ActivitieComplete() {
                     aptitudes: usuario.aptitudes
                 });
                 setTextoGPT(responseGPT.data);
-                const finalResponse = await axios.post('http://localhost:3000/activitie/answer/' + id, {answer: responseGPT.data});
+                const finalResponse = await axios.post('https://grades-care-backend.onrender.com/activitie/answer/' + id, {answer: responseGPT.data});
                 console.log(finalResponse.data);
             }
         }
@@ -68,7 +68,7 @@ function ActivitieComplete() {
 
     
     const completarActividad = async (puntosObt) => {
-        const response = await axios.post('http://localhost:3000/activitie/complete/' + id, {idUsuario: user.sub, evaluacion: evaluacion, points:puntosObt});
+        const response = await axios.post('https://grades-care-backend.onrender.com/activitie/complete/' + id, {idUsuario: user.sub, evaluacion: evaluacion, points:puntosObt});
         if(response.data.success){
             openAlert("¡Actividad completada!",
                 <div>
@@ -96,7 +96,7 @@ function ActivitieComplete() {
         const formData = new FormData();
         formData.append('file', archivo);
         openAlert("Subiendo archivo...", "Estamos subiendo tu archivo para revisión", "loading", null, null, null)
-        const response = await axios.post('http://localhost:3000/upload', formData, {headers: {'Content-Type': 'multipart/form-data'}});
+        const response = await axios.post('https://grades-care-backend.onrender.com/upload', formData, {headers: {'Content-Type': 'multipart/form-data'}});
         if(response.data.success){
             openAlert("¡Archivo subido!",
                 <div>
@@ -130,7 +130,7 @@ function ActivitieComplete() {
     };
 
     const deleteActivitie = async () => {
-        const response = await axios.delete('http://localhost:3000/activitie/' + id);
+        const response = await axios.delete('https://grades-care-backend.onrender.com/activitie/' + id);
         if(response.data.success){
             openAlert("¡Actividad eliminada!",
                 <div>

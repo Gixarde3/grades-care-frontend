@@ -29,7 +29,7 @@ function LayoutDashboard(props) {
     const registrar = async () => {
 
         console.log( {idUsuario: idUsuario, profile: perfil, career: carrera});
-        const response = await axios.post(`http://localhost:3000/register`, {idUsuario: idUsuario, profile: perfilText.current.value, career: carreraText.current.value, aptitudes: aptitudesRef.current.value});
+        const response = await axios.post(`https://grades-care-backend.onrender.com/register`, {idUsuario: idUsuario, profile: perfilText.current.value, career: carreraText.current.value, aptitudes: aptitudesRef.current.value});
         if(response.data.success){
             openAlert("¡Registro exitoso!",
                 <div>
@@ -64,7 +64,7 @@ function LayoutDashboard(props) {
 
     useEffect(() => {
         const getUsuarioNuevo = async () => {
-            const response = await axios.post(`http://localhost:3000`, {idUsuario: idUsuario});
+            const response = await axios.post(`https://grades-care-backend.onrender.com`, {idUsuario: idUsuario});
             if(!response.data.success){
                 console.log("Usuario nuevo");
                     openAlert("¡Bienvenido!", <div>

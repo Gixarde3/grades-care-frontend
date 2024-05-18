@@ -27,7 +27,7 @@ function Dashboard() {
         setAlertOpen(false);
     }
     const getActivities = async () => {
-        const response = await axios.post('http://localhost:3000/activities', {idUsuario: user.sub});
+        const response = await axios.post('https://grades-care-backend.onrender.com/activities', {idUsuario: user.sub});
         setActivities(response.data.data);
     }
     useEffect(() => {
@@ -35,7 +35,7 @@ function Dashboard() {
     }, []);
 
     const crearActividad = async () => {
-        const response = await axios.post('http://localhost:3000/activitie', {idUsuario: user.sub, title: titleRef.current.value, description: descriptionRef.current.value, subject: subjectRef.current.value, observations: observationsRef.current.value, type: tipoRef.current.value});
+        const response = await axios.post('https://grades-care-backend.onrender.com/activitie', {idUsuario: user.sub, title: titleRef.current.value, description: descriptionRef.current.value, subject: subjectRef.current.value, observations: observationsRef.current.value, type: tipoRef.current.value});
         if(response.data.success){
             openAlert("¡Actividad creada!",
                 <div>

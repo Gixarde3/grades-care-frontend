@@ -13,7 +13,7 @@ function AppBorrar() {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const { logout } = useAuth0();
   useEffect(() => {
-    const response = axios.get('http://localhost:3000');
+    const response = axios.get('https://grades-care-backend.onrender.com');
   }, [])
 
   if (isLoading) {
@@ -23,7 +23,7 @@ function AppBorrar() {
   return (
     <>
       <button onClick={() => loginWithRedirect()}>Log In</button>
-        <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+      <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
         Log Out
       </button>
 

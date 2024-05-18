@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import axios from "axios";
 import "./css/main.css";
+import { useNavigate } from "react-router-dom";
 import { ContextoPuntos } from "./contextos/ContextoPuntos";
 function User() {
     const [optionsOpened, setOptionsOpened] = useState(false);
     const { user, isAuthenticated, isLoading } = useAuth0();
     const { logout } = useAuth0();
     const {puntos, setPuntos} = useContext(ContextoPuntos);
+    const navigate = useNavigate();
     
     return (
         <div style={{
@@ -25,7 +27,7 @@ function User() {
             <button id="profile" onClick={() => setOptionsOpened(!optionsOpened)}>
                 <img src={`${user.picture}`} alt={`Foto de perfil de ${user.name}`} />
                 <div className={`options ${optionsOpened ? "open" : "close"}`}>
-                    <button className="logout option">
+                    <button className="logout option" onClick={() => navigate('prizes')}>
                         Canjear puntos
                         <img src="/img/brush.png" alt="" />
                     </button>

@@ -123,6 +123,7 @@ form, label{
     background-color: white;
     box-shadow: 0px 0px 3px 0px rgba(150,150,150,1);
     padding: 1rem;
+    margin-top: 1rem;
 }
 a{
     text-decoration: none;
@@ -133,4 +134,48 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+textarea{
+    resize: vertical;
+    /*Salto de linea automatico*/
+    white-space: pre-wrap;
+}
+
+.italic{
+    font-style: italic;
+}
+
+#logo{
+    height: 64px;
+    width: auto;
+}
+
+nav a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap:0.3rem;
+}
+
+.prizes{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.prize{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.avatar{
+    height: 6rem;
+    border-radius: 50%;
 }

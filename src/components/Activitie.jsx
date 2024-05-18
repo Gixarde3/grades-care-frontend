@@ -16,10 +16,9 @@ function Activitie({titulo, descripcion, materia, puntos, actividad, observacion
     return (
         <>
             <button className="activitie" onClick = {() => navigate(`activitie/${id}`)}>
-                <p className="puntos">{puntos} pts.</p>
                 <h3>{titulo}</h3>
                 <p>{descripcion}</p>
-                <p>{materia}</p>
+                <p className="italic">{materia}</p>
             </button>
             <Alert 
                 isOpen={alertOpen}

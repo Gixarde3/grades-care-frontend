@@ -41,6 +41,7 @@ body{
     justify-content: center;
     position: relative;
     cursor: initial;
+    margin-bottom: 3rem;
 }
 #main{
     position: relative;
@@ -50,7 +51,6 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
     height: 90vh;
 }
 .bottom{
@@ -84,7 +84,13 @@ body{
     align-items: center;
     justify-content: center;
 }
-
+#middle{
+    z-index: 2;
+    width: max-content;
+    height: max-content;
+    bottom: -1.8rem;
+    font-size: 2rem;
+}
 @media (max-width: 768px){
     .welcome{
         font-size: 3rem;

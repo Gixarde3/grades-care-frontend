@@ -90,7 +90,7 @@ function Dashboard() {
                         <label htmlFor="title">Título:</label>
                         <input type="text" id="title" name="title" ref={titleRef}/>
                         <label htmlFor="description">Da una descripción de lo que te falla, para que nuestra <span className="bold">IA</span> te proponga una:</label>
-                        <input type="text" id="description" name="description"  ref={descriptionRef}/>
+                        <textarea type="text" id="description" name="description"  ref={descriptionRef}></textarea>
                         <label htmlFor="subject">Materia:</label>
                         <input type="text" id="subject" name="subject" ref={subjectRef}/>
                         <label htmlFor="observations">Observaciones o restricciones:</label>

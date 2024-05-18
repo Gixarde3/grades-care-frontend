@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {ContextoPuntosProvider} from "./components/contextos/ContextoPuntos";
 import Dashboard from "./components/Dashboard";
 import ActivitieComplete from "./components/ActivitieComplete";
+import Prizes from "./components/Prizes";
 
 function App() {
     const { user, isAuthenticated, isLoading } = useAuth0();
@@ -22,6 +23,11 @@ function App() {
                     <ContextoPuntosProvider>
                         <ActivitieComplete />
                     </ContextoPuntosProvider>
+                    : <Navigate to="/" /> }/>
+                <Route path="prizes" element={isAuthenticated ?
+                     <ContextoPuntosProvider>
+                      <Prizes/>
+                     </ContextoPuntosProvider>
                     : <Navigate to="/" /> }/>
             </Route>
         </Routes>

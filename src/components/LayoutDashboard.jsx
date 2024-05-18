@@ -17,7 +17,7 @@ function LayoutDashboard(props) {
 
     const perfilText = useRef(null);
     const carreraText = useRef(null);
-
+    const aptitudesRef = useRef(null);
     const openAlert = (title, message, kind, redirectRoute, asking, onAccept) => {
         setAlert({ title: title, message: message, kind: kind, redirectRoute: redirectRoute, asking: asking, onAccept: onAccept});
         setAlertOpen(true);
@@ -29,7 +29,7 @@ function LayoutDashboard(props) {
     const registrar = async () => {
 
         console.log( {idUsuario: idUsuario, profile: perfil, career: carrera});
-        const response = await axios.post(`http://localhost:3000/register`, {idUsuario: idUsuario, profile: perfilText.current.value, career: carreraText.current.value});
+        const response = await axios.post(`http://localhost:3000/register`, {idUsuario: idUsuario, profile: perfilText.current.value, career: carreraText.current.value, aptitudes: aptitudesRef.current.value});
         if(response.data.success){
             openAlert("¡Registro exitoso!",
                 <div>
@@ -79,6 +79,10 @@ function LayoutDashboard(props) {
                         <label>
                             Escribe tu campo de interés o tu carrera
                             <input type="text" placeholder="Ingeniería en sistemas" ref={carreraText}/>
+                        </label>
+                        <label>
+                            También dinos en lo que eres buen@, con lo que te sientes más <span className="bold">cómod@</span> haciendo
+                            <input type="text" placeholder="Programación, artes, deportes" ref={aptitudesRef}/>
                         </label>
                     </form>
                 </div>,'mascot',null,true,registrar);

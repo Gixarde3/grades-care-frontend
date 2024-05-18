@@ -15,7 +15,7 @@ function Alert({ isOpen, title, message, kind, closeAlert, redirectRoute, asking
       'error': 'error.png',
       'question': 'question.png',
       'loading': 'loading.svg',
-      'mascot' : 'mascot.jpg'
+      'mascot' : 'mascot.png'
     }
     const accept = () => {
       closeAlert();

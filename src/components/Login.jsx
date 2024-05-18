@@ -5,16 +5,18 @@ function Login() {
 
     return (
         <div id="main">
+            <img src="/img/Logo-B.png" alt="Logo de la página" id="logo" style={{height:'200px', filter:'invert(1)'}}/>
             <div id="header">
-                <div className="login welcome">
+            
+                <div className="login welcome">                    
                     Bienvenido
-                    
                 </div>
+                <div className="bottom login" id="middle">a <span className="bold">MOTIVAI</span></div>
                 <div className="bottom login" id="left"></div>
                 <div className="bottom login" id="right"></div>
             </div>
             <div className="fondo">
-                <h2>Inicia sesión para <span className="bold">complementar</span> tu educación</h2>
+                <h2>La plataforma para <span className="bold">complementar</span> tu educación</h2>
                 <button onClick={() => loginWithRedirect()} className="login">Iniciar sesión</button>
             </div>
         </div>

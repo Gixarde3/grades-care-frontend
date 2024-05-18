@@ -21,6 +21,8 @@
     width: max-content;
     min-width: 500px;
     max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: scroll;
     background-color: white;
     height: auto;
     align-items: center;

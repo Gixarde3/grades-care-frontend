@@ -164,7 +164,7 @@ function ActivitieComplete() {
                 <p>Materia: {activity.subject}</p>
                 <p>Vale {activity.points} puntos</p>
                 <p>Descripción dada: {activity.description}</p>
-                <p>Observaciones y restricciones dadas{activity.observations}</p>
+                <p>Observaciones y restricciones dadas: {activity.observations}</p>
                 <ReactMarkdown>{activity.answerGPT ? activity.answerGPT : textoGPT}</ReactMarkdown>
                 
                 {activity.completed !== 1 &&

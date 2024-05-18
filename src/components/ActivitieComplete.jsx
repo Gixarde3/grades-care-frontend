@@ -111,6 +111,7 @@ function ActivitieComplete() {
             const url = response.data.url;
             console.log(activity)
             console.log(JSON.stringify({url: url, tarea: transformarCadena(activity.answerGPT)}) );
+            openAlert("Evaluando tarea...", "Estamos evaluando tu tarea", "loading", null, null, null)
             const responseEvaluacion = await axios.post('https://gradescare.onrender.com/evaluar', {url_pdf: url, tarea: transformarCadena(activity.answerGPT ? activity.answerGPT : textoGPT)});
             setEvaluacion(responseEvaluacion.data);
             console.log(responseEvaluacion.data);

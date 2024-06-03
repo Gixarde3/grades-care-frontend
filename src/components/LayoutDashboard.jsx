@@ -64,33 +64,39 @@ function LayoutDashboard(props) {
 
     useEffect(() => {
         const getUsuarioNuevo = async () => {
-            const response = await axios.post(`https://grades-care-backend.onrender.com`, {idUsuario: idUsuario});
-            if(!response.data.success){
-                console.log("Usuario nuevo");
-                    openAlert("¡Bienvenido!", <div>
-                    <h2>¡Gracias por registrarte!</h2>
-                    <p>Completa este formulario para <span className="bold">personalizar</span> tu experiencia</p>
-                    <form>
-                        <label>
-                            Descríbete de la mejor manera
-                            <span className="bold">Procura hablar de cómo te gusta aprender</span>
-                            <textarea placeholder="Soy un@ estudiante de licenciatura en..." ref={perfilText}></textarea>
-                        </label>
-                        <label>
-                            Escribe tu campo de interés o tu carrera
-                            <input type="text" placeholder="Ingeniería en sistemas" ref={carreraText}/>
-                        </label>
-                        <label>
-                            También dinos en lo que eres buen@, con lo que te sientes más <span className="bold">cómod@</span> haciendo
-                            <input type="text" placeholder="Programación, artes, deportes" ref={aptitudesRef}/>
-                        </label>
-                    </form>
-                </div>,'mascot',null,true,registrar);
-                setUsuarioNuevo(true);
-                setPuntos(0);
-            }else{
-                setPuntos(response.data.usuario.points);
+            try{
+                const response = await axios.post(`https://grades-care-backend.onrender.com`, {idUsuario: idUsuario});
+                if(!response.data.success){
+                    console.log("Usuario nuevo");
+                        openAlert("¡Bienvenido!", <div>
+                        <h2>¡Gracias por registrarte!</h2>
+                        <p>Completa este formulario para <span className="bold">personalizar</span> tu experiencia</p>
+                        <form>
+                            <label>
+                                Descríbete de la mejor manera
+                                <span className="bold">Procura hablar de cómo te gusta aprender</span>
+                                <textarea placeholder="Soy un@ estudiante de licenciatura en..." ref={perfilText}></textarea>
+                            </label>
+                            <label>
+                                Escribe tu campo de interés o tu carrera
+                                <input type="text" placeholder="Ingeniería en sistemas" ref={carreraText}/>
+                            </label>
+                            <label>
+                                También dinos en lo que eres buen@, con lo que te sientes más <span className="bold">cómod@</span> haciendo
+                                <input type="text" placeholder="Programación, artes, deportes" ref={aptitudesRef}/>
+                            </label>
+                        </form>
+                    </div>,'mascot',null,true,registrar);
+                    setUsuarioNuevo(true);
+                    setPuntos(0);
+                }else{
+                    setPuntos(response.data.usuario.points);
+                }
+            }catch(error){
+
+                console.log(error);
             }
+            
         }
 
         getUsuarioNuevo();
